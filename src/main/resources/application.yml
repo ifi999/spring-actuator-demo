@@ -2,11 +2,13 @@ management:
 # ??? ??
   endpoint:
     health:
-      enabled: false
+      enabled: true
       cache:
         time-to-live: 1d
+#      show-components: always
+      show-details: always
     beans:
-      enabled: false
+      enabled: true
       cache:
         time-to-live: 1d
     caches:
@@ -24,7 +26,7 @@ management:
         include: "*"
         exclude:
 #         `include`?? ?? ?? ??
-          - health
-          - beans
+#          - health
+#          - beans
       cors:
         allowed-origins: http://sample1.com, http://sample2.com
