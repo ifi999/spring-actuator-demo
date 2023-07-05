@@ -19,7 +19,10 @@ management:
       enabled: true
       cache:
         time-to-live: 10s
-# ?? ?? ??
+    env:
+#     properties value? ????? "*****" ?? ??? ??. ?? ??? ??? ??
+      show-values: always
+  # ?? ?? ??
   endpoints:
     web:
       exposure:
@@ -30,3 +33,22 @@ management:
 #          - beans
       cors:
         allowed-origins: http://sample1.com, http://sample2.com
+# info endpoint ??
+  info:
+    env:
+      enabled: true
+    git:
+      enabled: true
+#     ?? ???? ?? ????
+      mode: full
+    build:
+      enabled: true
+    os:
+      enabled: true
+
+# info endpoint ???? ?? (gradle ?? ${xxx.xxx} ??)
+info:
+  my-app:
+    any-value: someValue
+    group-id: "@project.groupId@"
+    artifact-id: "@project.artifactId@"
