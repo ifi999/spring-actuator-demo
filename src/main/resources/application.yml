@@ -1,5 +1,5 @@
 management:
-# ??? ??
+# 개별 활성화 여부
   endpoint:
     health:
       enabled: true
@@ -20,35 +20,44 @@ management:
       cache:
         time-to-live: 10s
     env:
-#     properties value? ????? "*****" ?? ??? ??. ?? ??? ??? ??
+#     properties value 값으로 "*****"가 보이도록 되어있는데, 해제 가능. 정보 노출 주의
       show-values: always
-  # ?? ?? ??, metrics endpoint ???? ??? ??? ??
+  # metrics endpoint 그룹 제어
   endpoints:
     web:
       exposure:
         include: "*"
         exclude:
-#         `include`?? ?? ?? ??
+#         `include`보다 우선됨
 #          - health
 #          - beans
       cors:
         allowed-origins: http://sample1.com, http://sample2.com
-# info endpoint ??
+# info endpoint 설정
   info:
     env:
       enabled: true
     git:
       enabled: true
-#     ?? ???? ?? ????
+#     깃 상세 내용 or 간략한 내용
       mode: full
     build:
       enabled: true
     os:
       enabled: true
 
-# info endpoint ???? ?? (gradle ?? ${xxx.xxx} ??)
+# info endpoint (gradle 일 경우 ${xxx.xxx} 형식)
 info:
   my-app:
     any-value: someValue
     group-id: "@project.groupId@"
     artifact-id: "@project.artifactId@"
+
+
+    # spring-boot-admin-starter-client
+    spring:
+      boot:
+        admin:
+          client:
+            url:
+              - 127.0.0.1:9090
